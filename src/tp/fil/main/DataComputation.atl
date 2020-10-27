@@ -4,4 +4,85 @@
 module DataComputation;
 create OUT : Data from IN : Java;
 
--- TO BE COMPLETED
+rule JavaModel2DataModel {
+	from
+		jm : Java!Model
+		
+	to
+		dm : Data!Model (
+			ownedElements <- jm.ownedElements,
+			name <- jm.name
+		)
+}
+
+rule JavaPackage2DataPackage {
+	
+	from
+		jp : Java!Package
+	to
+		dp : Data!Package (
+			ownedElements <- jp.ownedElements,
+			ownedPackages <- jp.ownedPackages,
+			name <- jp.name,
+			proxy <- jp.proxy,
+			comments <- jp.comments
+		) 	
+}
+
+rule JavaClass2DataClass {
+	
+	from
+		jc : Java!ClassDeclaration
+	to
+		dc : Data!Classe (
+			bodyDeclarations <- jc.bodyDeclarations,
+			name <- jc.name,
+			proxy <- jc.proxy,
+			comments <- jc.comments
+		) 	
+}
+
+rule JavaComment2DataComment {
+	
+	from
+		jc : Java!Comment
+	to
+		dc : Data!Comment ()
+}
+
+rule JavaFieldDeclaration2DataFieldDeclaration {
+	
+	from
+		jfd : Java!FieldDeclaration
+	to
+		dfd : Data!FiedDeclaration (
+			name <- jfd.name,
+			proxy <- jfd.proxy,
+			comments <- jfd.comments	
+		)
+}
+
+rule JavaMethodDeclaration2DataMethodDeclaration {
+	
+	from
+		jmd : Java!MethodDeclaration
+	to
+		dmd : Data!MethodDeclaration (
+			name <- jmd.name,
+			proxy <- jmd.proxy,
+			comments <- jmd.comments
+		)
+}
+
+rule JavaConstructorDeclaration2DataConstructorDeclaration {
+	
+	from
+		jcd : Java!ConstructorDeclaration
+	to
+		dcd : Data!ConstructorDeclaration (
+			name <- jcd.name,
+			proxy <- jcd.proxy,
+			comments <- jcd.comments	
+		)
+		
+}

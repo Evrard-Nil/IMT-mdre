@@ -3,9 +3,9 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Data" nsURI="http://data" nsPrefix="data">
   <eClassifiers xsi:type="ecore:EClass" name="Classe" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="bodyDeclarations" upperBound="-1"
-        eType="#//FiedDeclaration" containment="true"/>
+        eType="#//BodyDeclaration" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BodyDeclarations" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BodyDeclaration" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="proxy" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -16,11 +16,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="Comment"/>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"
-        eType="#//Classe" containment="true"/>
+        eType="#//Package" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FiedDeclaration" eSuperTypes="#//BodyDeclarations"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FiedDeclaration" eSuperTypes="#//BodyDeclaration"/>
   <eClassifiers xsi:type="ecore:EClass" name="MethodDeclaration" eSuperTypes="#//AbstractMethodDeclaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"
+        eType="#//Classe" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPackages" upperBound="-1"
+        eType="#//Package" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractMethodDeclaration" abstract="true"
-      eSuperTypes="#//BodyDeclarations"/>
+      eSuperTypes="#//BodyDeclaration"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConstructorDeclaration" eSuperTypes="#//AbstractMethodDeclaration"/>
 </ecore:EPackage>

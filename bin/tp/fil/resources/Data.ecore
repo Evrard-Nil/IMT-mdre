@@ -19,4 +19,8 @@
         eType="#//Classe" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FiedDeclaration" eSuperTypes="#//BodyDeclarations"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MethodDeclaration" eSuperTypes="#//AbstractMethodDeclaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractMethodDeclaration" abstract="true"
+      eSuperTypes="#//BodyDeclarations"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstructorDeclaration" eSuperTypes="#//AbstractMethodDeclaration"/>
 </ecore:EPackage>

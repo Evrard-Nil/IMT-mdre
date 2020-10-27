@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Data" nsURI="http://data" nsPrefix="data">
+  <eClassifiers xsi:type="ecore:EClass" name="Classe" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bodyDeclarations" upperBound="-1"
+        eType="#//FiedDeclaration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BodyDeclarations" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="proxy" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comments" upperBound="-1"
+        eType="#//Comment" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Comment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"
+        eType="#//Classe" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FiedDeclaration" eSuperTypes="#//BodyDeclarations"/>
+</ecore:EPackage>

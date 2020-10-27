@@ -1,18 +1,21 @@
 package tp.fil.main;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.modisco.java.emf.JavaPackage;
+import org.eclipse.modisco.java.emf.impl.PackageImpl;
 import org.eclipse.modisco.java.Model;
 //import org.eclipse.modisco.java.Package;
 //import org.eclipse.modisco.java.AbstractTypeDeclaration;
@@ -69,7 +72,14 @@ public class DataComputation {
 			/*
 			 * Beginning of the part to be completed...
 			 */
-			
+			while(iterator.hasNext()) {
+				EObject currentModelElement = iterator.next();
+				if(currentModelElement.eClass().getName().equals("Model")) {
+					System.out.println(currentModelElement.eClass().getName());
+					
+				}
+			}
+
 			//TO BE COMPLETED
 			
 			/*

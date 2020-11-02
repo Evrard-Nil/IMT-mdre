@@ -47,7 +47,9 @@ rule JavaComment2DataComment {
 	from
 		jc : Java!Comment
 	to
-		dc : Data!Comment ()
+		dc : Data!Comment (
+				content <- jc.content
+		)
 }
 
 rule JavaFieldDeclaration2DataFieldDeclaration {
@@ -55,7 +57,7 @@ rule JavaFieldDeclaration2DataFieldDeclaration {
 	from
 		jfd : Java!FieldDeclaration
 	to
-		dfd : Data!FiedDeclaration (
+		dfd : Data!FieldDeclaration (
 			name <- jfd.fragments.first().name,
 			proxy <- jfd.proxy,
 			comments <- jfd.comments	

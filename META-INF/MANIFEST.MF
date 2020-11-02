@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: tp.fil.Activator
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore,
+ org.eclipse.uml2.uml,
+ org.eclipse.uml2.uml.resources,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.ocl,
@@ -23,4 +24,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: tp.fil.main
+Bundle-ClassPath: bin/
 Automatic-Module-Name: tp.fil

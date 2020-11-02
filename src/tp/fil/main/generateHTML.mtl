@@ -6,7 +6,19 @@
 [comment @main/]  
 [file ('PetStore_rendering.html', false, 'UTF-8')]
 	
-	[comment TO BE COMPLETED/]
+	public model [model.name.toUpperFirst()/] {
+	
+	private boolean [model.proxy/]
+
+	[for (ownedElements : Package | model.ownedElements)]
+		block_expression
+	[/for]
+	
+	[for (comments : Comment | model.comments)]
+		block_expression
+	[/for]
+ 
+   }
 
 [/file]
 [/template]

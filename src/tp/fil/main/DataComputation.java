@@ -20,8 +20,13 @@ import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.modisco.java.emf.JavaPackage;
 import org.eclipse.modisco.java.emf.impl.PackageImpl;
+import org.eclipse.modisco.java.ASTNode;
 import org.eclipse.modisco.java.BodyDeclaration;
 import org.eclipse.modisco.java.ClassDeclaration;
+import org.eclipse.modisco.java.Comment;
+import org.eclipse.modisco.java.ConstructorDeclaration;
+import org.eclipse.modisco.java.FieldDeclaration;
+import org.eclipse.modisco.java.MethodDeclaration;
 import org.eclipse.modisco.java.Model;
 import org.eclipse.modisco.java.Package;
 import org.eclipse.modisco.java.TypeDeclaration;
@@ -36,6 +41,11 @@ public class DataComputation {
 	private static EClass modelClass;
 	private static EClass packageClass;
 	private static EClass classDeclarationClass;
+	private static EClass commentsClass;
+	private static EClass methodDeclerationClass;
+	private static EClass constructorDeclarationClass;
+	private static EClass fieldDeclarationClass;
+	private static EPackage dataPackage;
 
 	public static void main(String[] args) {
 		try {
@@ -62,10 +72,16 @@ public class DataComputation {
 			// Initiate Data model with a "Model" root object/element
 			dataModel = resSet.createResource(URI.createFileURI("../PetStore/PetStore_data.xmi"));
 
-			EPackage dataPackage = (EPackage) dataMetamodel.getContents().get(0);
+			dataPackage = (EPackage) dataMetamodel.getContents().get(0);
+
 			modelClass = (EClass) dataPackage.getEClassifier("Model");
 			packageClass = (EClass) dataPackage.getEClassifier("Package");
+			commentsClass = (EClass) dataPackage.getEClassifier("Comment");
 			classDeclarationClass = (EClass) dataPackage.getEClassifier("Classe");
+			fieldDeclarationClass = (EClass) dataPackage.getEClassifier("FiedDeclaration");
+			methodDeclerationClass = (EClass) dataPackage.getEClassifier("MethodDeclaration");
+			constructorDeclarationClass = (EClass) dataPackage.getEClassifier("ConstructorDeclaration");
+
 			EObject modelObject = dataPackage.getEFactoryInstance().create(modelClass);
 
 			Model javaModelRootElement = (Model) javaModel.getContents().get(0);
@@ -83,7 +99,7 @@ public class DataComputation {
 			while (iterator.hasNext()) {
 				EObject currentModelElement = iterator.next();
 				if (currentModelElement.eClass().getName().equals("Model")) {
-					transfoModel(dataPackage, modelObject, currentModelElement);
+					transfoModel(modelObject, currentModelElement);
 
 				}
 			}
@@ -95,7 +111,7 @@ public class DataComputation {
 			 */
 
 			// Serialize Data model
-			dataModel.save(new FileOutputStream("123.xmi"), null);
+			dataModel.save(new FileOutputStream("javaOutput.xmi"), null);
 
 			// Unload models
 			javaModel.unload();
@@ -106,7 +122,7 @@ public class DataComputation {
 		}
 	}
 
-	private static void transfoModel(EPackage dataPackage, EObject modelObject, EObject currentModelElement) {
+	private static void transfoModel(EObject modelObject, EObject currentModelElement) {
 		System.out.println(currentModelElement.eClass().getName());
 		EStructuralFeature nameFeat = currentModelElement.eClass().getEStructuralFeature("name");
 		EStructuralFeature nameFeatD = modelClass.getEStructuralFeature("name");
@@ -118,11 +134,11 @@ public class DataComputation {
 		EStructuralFeature ownedElementsFeature = currentModelElement.eClass().getEStructuralFeature("ownedElements");
 		EStructuralFeature ownedElementsFeatureD = modelClass.getEStructuralFeature("ownedElements");
 		List<Package> ownedElements = (List<Package>) currentModelElement.eGet(ownedElementsFeature);
-		List<EObject> ownedElementsD = transfoPackage(dataPackage, ownedElements);
+		List<EObject> ownedElementsD = transfoPackage(ownedElements);
 		modelObject.eSet(ownedElementsFeatureD, ownedElementsD);
 	}
 
-	private static List<EObject> transfoPackage(EPackage dataPackage, List<Package> packages) {
+	private static List<EObject> transfoPackage(List<Package> packages) {
 		List<EObject> packagesD = new ArrayList<>();
 		for (Package p : packages) {
 			EObject packageObject = dataPackage.getEFactoryInstance().create(packageClass);
@@ -131,32 +147,94 @@ public class DataComputation {
 			EStructuralFeature ownedPackagesFeat = p.eClass().getEStructuralFeature("ownedPackages");
 			EStructuralFeature ownedPackagesFeatD = packageClass.getEStructuralFeature("ownedPackages");
 			List<Package> ownedPackages = (List<Package>) p.eGet(ownedPackagesFeat);
-			List<EObject> ownedPackagesD = transfoPackage(dataPackage, ownedPackages);
+			List<EObject> ownedPackagesD = transfoPackage(ownedPackages);
 			packageObject.eSet(ownedPackagesFeatD, ownedPackagesD);
 
 			EStructuralFeature ownedElementsFeat = p.eClass().getEStructuralFeature("ownedElements");
 			EStructuralFeature ownedElementsFeatD = packageClass.getEStructuralFeature("ownedElements");
 			List<BodyDeclaration> ownedElements = (List<BodyDeclaration>) p.eGet(ownedElementsFeat);
-			List<EObject> ownedElementsD = transfoClassDeclaration(dataPackage, ownedElements);
+			List<EObject> ownedElementsD = transfoClassDeclaration(ownedElements);
 			packageObject.eSet(ownedElementsFeatD, ownedElementsD);
+
+			getProxyAndComment(p, packageObject);
 
 			packagesD.add(packageObject);
 		}
 		return packagesD;
 	}
 
-	private static List<EObject> transfoClassDeclaration(EPackage dataPackage,
-			List<BodyDeclaration> bodyDeclarations) {
+	private static void getProxyAndComment(ASTNode node, EObject packageObject) {
+		EStructuralFeature commentsFeat = node.eClass().getEStructuralFeature("comments");
+		EStructuralFeature commentsFeatD = packageObject.eClass().getEStructuralFeature("comments");
+		List<Comment> comments = (List<Comment>) node.eGet(commentsFeat);
+		List<EObject> commentsD = transfoComments(comments);
+		packageObject.eSet(commentsFeatD, commentsD);
+
+		EStructuralFeature proxyFeat = node.eClass().getEStructuralFeature("proxy");
+		EStructuralFeature proxyFeatD = packageObject.eClass().getEStructuralFeature("proxy");
+		Boolean proxy = (Boolean) node.eGet(proxyFeat);
+		packageObject.eSet(proxyFeatD, proxy);
+	}
+
+	private static List<EObject> transfoClassDeclaration(List<BodyDeclaration> bodyDeclarations) {
 		List<EObject> classesD = new ArrayList<>();
 		for (BodyDeclaration p : bodyDeclarations) {
 			if (p instanceof ClassDeclaration) {
 				EObject classDeclarationObject = dataPackage.getEFactoryInstance().create(classDeclarationClass);
-				classDeclarationObject.eSet(packageClass.getEStructuralFeature("name"), p.getName());
+				classDeclarationObject.eSet(classDeclarationClass.getEStructuralFeature("name"), p.getName());
+				getProxyAndComment(p, classDeclarationObject);
+
+				EStructuralFeature declarationsFeat = p.eClass().getEStructuralFeature("bodyDeclarations");
+				EStructuralFeature declarationsFeatD = classDeclarationClass.getEStructuralFeature("bodyDeclarations");
+				List<BodyDeclaration> declarations = (List<BodyDeclaration>) p.eGet(declarationsFeat);
+				List<EObject> declarationsD = transfoBodyDeclarations(declarations);
+				classDeclarationObject.eSet(declarationsFeatD, declarationsD);
+
 				classesD.add(classDeclarationObject);
 			}
 
 		}
 		return classesD;
+	}
+
+	private static List<EObject> transfoComments(List<Comment> comments) {
+		List<EObject> commentsD = new ArrayList<>();
+		for (Comment p : comments) {
+			EObject classDeclarationObject = dataPackage.getEFactoryInstance().create(commentsClass);
+			commentsD.add(classDeclarationObject);
+
+		}
+		return commentsD;
+	}
+
+	private static List<EObject> transfoBodyDeclarations(List<BodyDeclaration> declarations) {
+		List<EObject> bodyDeclarationsD = new ArrayList<>();
+		for (BodyDeclaration p : declarations) {
+			if (p instanceof FieldDeclaration) {
+				EObject fieldObject = dataPackage.getEFactoryInstance().create(fieldDeclarationClass);
+				String name = ((FieldDeclaration) p).getFragments().get(0).getName();
+				fieldObject.eSet(fieldDeclarationClass.getEStructuralFeature("name"), name);
+
+				getProxyAndComment(p, fieldObject);
+				bodyDeclarationsD.add(fieldObject);
+
+			}
+			if (p instanceof MethodDeclaration) {
+				EObject methodObject = dataPackage.getEFactoryInstance().create(methodDeclerationClass);
+				methodObject.eSet(methodDeclerationClass.getEStructuralFeature("name"), p.getName());
+				getProxyAndComment(p, methodObject);
+				bodyDeclarationsD.add(methodObject);
+
+			} else if (p instanceof ConstructorDeclaration) {
+				EObject constructorObject = dataPackage.getEFactoryInstance().create(constructorDeclarationClass);
+				constructorObject.eSet(constructorDeclarationClass.getEStructuralFeature("name"), p.getName());
+				getProxyAndComment(p, constructorObject);
+				bodyDeclarationsD.add(constructorObject);
+
+			}
+
+		}
+		return bodyDeclarationsD;
 	}
 
 }

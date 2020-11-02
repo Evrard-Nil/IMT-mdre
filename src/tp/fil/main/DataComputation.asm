@@ -146,9 +146,13 @@
 		<constant value="FiedDeclaration"/>
 		<constant value="58:3-62:4"/>
 		<constant value="__applyJavaFieldDeclaration2DataFieldDeclaration"/>
+		<constant value="fragments"/>
+		<constant value="J.first():J"/>
 		<constant value="59:12-59:15"/>
-		<constant value="59:12-59:20"/>
-		<constant value="59:4-59:20"/>
+		<constant value="59:12-59:25"/>
+		<constant value="59:12-59:33"/>
+		<constant value="59:12-59:38"/>
+		<constant value="59:4-59:38"/>
 		<constant value="60:13-60:16"/>
 		<constant value="60:13-60:22"/>
 		<constant value="60:4-60:22"/>
@@ -843,6 +847,8 @@
 			<dup/>
 			<getasm/>
 			<load arg="29"/>
+			<get arg="145"/>
+			<call arg="146"/>
 			<get arg="38"/>
 			<call arg="30"/>
 			<set arg="38"/>
@@ -861,30 +867,32 @@
 			<pop/>
 		</code>
 		<linenumbertable>
-			<lne id="145" begin="11" end="11"/>
-			<lne id="146" begin="11" end="12"/>
-			<lne id="147" begin="9" end="14"/>
-			<lne id="148" begin="17" end="17"/>
-			<lne id="149" begin="17" end="18"/>
-			<lne id="150" begin="15" end="20"/>
-			<lne id="151" begin="23" end="23"/>
-			<lne id="152" begin="23" end="24"/>
-			<lne id="153" begin="21" end="26"/>
-			<lne id="143" begin="8" end="27"/>
+			<lne id="147" begin="11" end="11"/>
+			<lne id="148" begin="11" end="12"/>
+			<lne id="149" begin="11" end="13"/>
+			<lne id="150" begin="11" end="14"/>
+			<lne id="151" begin="9" end="16"/>
+			<lne id="152" begin="19" end="19"/>
+			<lne id="153" begin="19" end="20"/>
+			<lne id="154" begin="17" end="22"/>
+			<lne id="155" begin="25" end="25"/>
+			<lne id="156" begin="25" end="26"/>
+			<lne id="157" begin="23" end="28"/>
+			<lne id="143" begin="8" end="29"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="3" name="141" begin="7" end="27"/>
-			<lve slot="2" name="140" begin="3" end="27"/>
-			<lve slot="0" name="17" begin="0" end="27"/>
-			<lve slot="1" name="89" begin="0" end="27"/>
+			<lve slot="3" name="141" begin="7" end="29"/>
+			<lve slot="2" name="140" begin="3" end="29"/>
+			<lve slot="0" name="17" begin="0" end="29"/>
+			<lve slot="1" name="89" begin="0" end="29"/>
 		</localvariabletable>
 	</operation>
-	<operation name="154">
+	<operation name="158">
 		<context type="6"/>
 		<parameters>
 		</parameters>
 		<code>
-			<push arg="155"/>
+			<push arg="159"/>
 			<push arg="65"/>
 			<findme/>
 			<push arg="66"/>
@@ -900,12 +908,12 @@
 			<push arg="59"/>
 			<pcall arg="69"/>
 			<dup/>
-			<push arg="156"/>
+			<push arg="160"/>
 			<load arg="19"/>
 			<pcall arg="71"/>
 			<dup/>
-			<push arg="157"/>
-			<push arg="155"/>
+			<push arg="161"/>
+			<push arg="159"/>
 			<push arg="73"/>
 			<new/>
 			<pcall arg="74"/>
@@ -914,25 +922,25 @@
 			<enditerate/>
 		</code>
 		<linenumbertable>
-			<lne id="158" begin="19" end="24"/>
+			<lne id="162" begin="19" end="24"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="1" name="156" begin="6" end="26"/>
+			<lve slot="1" name="160" begin="6" end="26"/>
 			<lve slot="0" name="17" begin="0" end="27"/>
 		</localvariabletable>
 	</operation>
-	<operation name="159">
+	<operation name="163">
 		<context type="6"/>
 		<parameters>
 			<parameter name="19" type="78"/>
 		</parameters>
 		<code>
 			<load arg="19"/>
-			<push arg="156"/>
+			<push arg="160"/>
 			<call arg="79"/>
 			<store arg="29"/>
 			<load arg="19"/>
-			<push arg="157"/>
+			<push arg="161"/>
 			<call arg="80"/>
 			<store arg="81"/>
 			<load arg="81"/>
@@ -957,30 +965,30 @@
 			<pop/>
 		</code>
 		<linenumbertable>
-			<lne id="160" begin="11" end="11"/>
-			<lne id="161" begin="11" end="12"/>
-			<lne id="162" begin="9" end="14"/>
-			<lne id="163" begin="17" end="17"/>
-			<lne id="164" begin="17" end="18"/>
-			<lne id="165" begin="15" end="20"/>
-			<lne id="166" begin="23" end="23"/>
-			<lne id="167" begin="23" end="24"/>
-			<lne id="168" begin="21" end="26"/>
-			<lne id="158" begin="8" end="27"/>
+			<lne id="164" begin="11" end="11"/>
+			<lne id="165" begin="11" end="12"/>
+			<lne id="166" begin="9" end="14"/>
+			<lne id="167" begin="17" end="17"/>
+			<lne id="168" begin="17" end="18"/>
+			<lne id="169" begin="15" end="20"/>
+			<lne id="170" begin="23" end="23"/>
+			<lne id="171" begin="23" end="24"/>
+			<lne id="172" begin="21" end="26"/>
+			<lne id="162" begin="8" end="27"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="3" name="157" begin="7" end="27"/>
-			<lve slot="2" name="156" begin="3" end="27"/>
+			<lve slot="3" name="161" begin="7" end="27"/>
+			<lve slot="2" name="160" begin="3" end="27"/>
 			<lve slot="0" name="17" begin="0" end="27"/>
 			<lve slot="1" name="89" begin="0" end="27"/>
 		</localvariabletable>
 	</operation>
-	<operation name="169">
+	<operation name="173">
 		<context type="6"/>
 		<parameters>
 		</parameters>
 		<code>
-			<push arg="170"/>
+			<push arg="174"/>
 			<push arg="65"/>
 			<findme/>
 			<push arg="66"/>
@@ -996,12 +1004,12 @@
 			<push arg="61"/>
 			<pcall arg="69"/>
 			<dup/>
-			<push arg="171"/>
+			<push arg="175"/>
 			<load arg="19"/>
 			<pcall arg="71"/>
 			<dup/>
-			<push arg="172"/>
-			<push arg="170"/>
+			<push arg="176"/>
+			<push arg="174"/>
 			<push arg="73"/>
 			<new/>
 			<pcall arg="74"/>
@@ -1010,25 +1018,25 @@
 			<enditerate/>
 		</code>
 		<linenumbertable>
-			<lne id="173" begin="19" end="24"/>
+			<lne id="177" begin="19" end="24"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="1" name="171" begin="6" end="26"/>
+			<lve slot="1" name="175" begin="6" end="26"/>
 			<lve slot="0" name="17" begin="0" end="27"/>
 		</localvariabletable>
 	</operation>
-	<operation name="174">
+	<operation name="178">
 		<context type="6"/>
 		<parameters>
 			<parameter name="19" type="78"/>
 		</parameters>
 		<code>
 			<load arg="19"/>
-			<push arg="171"/>
+			<push arg="175"/>
 			<call arg="79"/>
 			<store arg="29"/>
 			<load arg="19"/>
-			<push arg="172"/>
+			<push arg="176"/>
 			<call arg="80"/>
 			<store arg="81"/>
 			<load arg="81"/>
@@ -1053,20 +1061,20 @@
 			<pop/>
 		</code>
 		<linenumbertable>
-			<lne id="175" begin="11" end="11"/>
-			<lne id="176" begin="11" end="12"/>
-			<lne id="177" begin="9" end="14"/>
-			<lne id="178" begin="17" end="17"/>
-			<lne id="179" begin="17" end="18"/>
-			<lne id="180" begin="15" end="20"/>
-			<lne id="181" begin="23" end="23"/>
-			<lne id="182" begin="23" end="24"/>
-			<lne id="183" begin="21" end="26"/>
-			<lne id="173" begin="8" end="27"/>
+			<lne id="179" begin="11" end="11"/>
+			<lne id="180" begin="11" end="12"/>
+			<lne id="181" begin="9" end="14"/>
+			<lne id="182" begin="17" end="17"/>
+			<lne id="183" begin="17" end="18"/>
+			<lne id="184" begin="15" end="20"/>
+			<lne id="185" begin="23" end="23"/>
+			<lne id="186" begin="23" end="24"/>
+			<lne id="187" begin="21" end="26"/>
+			<lne id="177" begin="8" end="27"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="3" name="172" begin="7" end="27"/>
-			<lve slot="2" name="171" begin="3" end="27"/>
+			<lve slot="3" name="176" begin="7" end="27"/>
+			<lve slot="2" name="175" begin="3" end="27"/>
 			<lve slot="0" name="17" begin="0" end="27"/>
 			<lve slot="1" name="89" begin="0" end="27"/>
 		</localvariabletable>

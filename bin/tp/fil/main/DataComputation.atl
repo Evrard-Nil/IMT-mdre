@@ -56,7 +56,7 @@ rule JavaFieldDeclaration2DataFieldDeclaration {
 		jfd : Java!FieldDeclaration
 	to
 		dfd : Data!FiedDeclaration (
-			name <- jfd.name,
+			name <- jfd.fragments.first().name,
 			proxy <- jfd.proxy,
 			comments <- jfd.comments	
 		)

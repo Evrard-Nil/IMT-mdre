@@ -7,62 +7,62 @@
           <ownedPackages name="petstore">
             <ownedPackages name="captcha">
               <ownedElements name="CaptchaSingleton">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="instance"/>
+                <comments content="/*&#xA; * Singleton facility to create the captcha image&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="instance"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getInstance"/>
               </ownedElements>
               <ownedElements name="SimpleCaptcha">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="rd"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="WIDTH"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="HEIGHT"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="background"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="rd"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="WIDTH"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="HEIGHT"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="background"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="drawMessage"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="drawRandomLine"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="drawRandomLine"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SimpleCaptcha">
-                  <comments/>
+                  <comments content="/** Creates a new instance of SimpleCaptcha */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="generateCaptchaString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCaptchaImage"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCaptchaImage"/>
               </ownedElements>
               <ownedElements name="RandomString">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="rd"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="rd"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getStringfromLong"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="RandomString" proxy="true"/>
               </ownedElements>
               <ownedElements name="BlueFilter">
-                <comments/>
+                <comments content="/**&#xA; *&#xA; * @author yuta&#xA; */"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="BlueFilter">
-                  <comments/>
+                  <comments content="/** Creates a new instance of BlueFilter */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="filterRGB"/>
               </ownedElements>
             </ownedPackages>
             <ownedPackages name="controller">
               <ownedElements name="ControllerServlet">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="actionMap"/>
+                <comments content="/**&#xA; * This servlet is responsible for interacting with a client&#xA; * based controller and will fetch resources including content&#xA; * and relevant script.&#xA; *&#xA; * This servlet also will process requests for client observers&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="actionMap"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="init"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="findAction"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="destroy"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="doGet"/>
               </ownedElements>
               <ownedElements name="AutocompleteBean">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="ITEMCOUNT"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="cities"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zips"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="states"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="catalogFacade"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="ITEMCOUNT"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="cities"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zips"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="states"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="catalogFacade"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="AutocompleteBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of AutocompleteBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="initCities">
-                  <comments/>
+                  <comments content="/**&#xA;     * right now, it's always accessing the DB for every request.&#xA;     * needs to install cache mechanism later&#xA;     * returns a decoded str (ex. %20 -> &quot; &quot;)&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCities"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getZips"/>
@@ -71,40 +71,40 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="completeState"/>
               </ownedElements>
               <ownedElements name="EntryFilter">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="filterConfig">
-                  <comments/>
-                  <comments/>
-                  <comments/>
+                <comments content="/**&#xA; * Main security filter&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="filterConfig">
+                  <comments content="// The filter configuration object we are associated with.  If"/>
+                  <comments content="// this value is null, this filter instance is not currently"/>
+                  <comments content="// configured."/>
                 </bodyDeclarations>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="entryPages"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="entryPages"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="EntryFilter"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="doFilter">
-                  <comments/>
+                  <comments content="/**&#xA;     *&#xA;     * @param request The servlet request we are processing&#xA;     * @param result The servlet response we are creating&#xA;     * @param chain The filter chain we are processing&#xA;     *&#xA;     * @exception IOException if an input/output error occurs&#xA;     * @exception ServletException if a servlet error occurs&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getFilterConfig">
-                  <comments/>
+                  <comments content="/**&#xA;     * Return the filter configuration object for this filter.&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setFilterConfig">
-                  <comments/>
+                  <comments content="/**&#xA;     * Set the filter configuration object for this filter.&#xA;     *&#xA;     * @param filterConfig The filter configuration object&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="destroy">
-                  <comments/>
+                  <comments content="/**&#xA;     * Destroy method for this filter&#xA;     *&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="init">
-                  <comments/>
+                  <comments content="/**&#xA;     * Init method for this filter&#xA;     *&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="toString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="sendProcessingError"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getStackTrace"/>
               </ownedElements>
               <ownedElements name="AddressBean">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="street"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="city"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="state"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zip"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="street"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="city"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="state"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zip"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="AddressBean"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setStreet"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getStreet"/>
@@ -116,19 +116,19 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getZip"/>
               </ownedElements>
               <ownedElements name="FileUploadBean">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="comma"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="categories"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="products"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="catalogFacade"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="factory">
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="comma"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="categories"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="products"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="catalogFacade"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="factory">
+                  <comments content="/**&#xA;     * &lt;p>Factory for response writers that we can use to construct the&#xA;     * outgoing response.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="FILE_UL_RESPONSE">
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="FILE_UL_RESPONSE">
+                  <comments content="/**&#xA;     * session attribute to contain the fileupload status&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="FileUploadBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of FileUploadBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setProducts"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProducts"/>
@@ -141,25 +141,25 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="sendErrorResponse"/>
               </ownedElements>
               <ownedElements name="CaptchaValidateFilter">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="debug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="CAPTCHA_FIELD_NAME"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="INVALID_CAPTCHA"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="filterConfig">
-                  <comments/>
-                  <comments/>
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="debug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="CAPTCHA_FIELD_NAME"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="INVALID_CAPTCHA"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="filterConfig">
+                  <comments content="// The filter configuration object we are associated with.  If"/>
+                  <comments content="// this value is null, this filter instance is not currently"/>
+                  <comments content="// configured."/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="isCaptchaCorrect">
-                  <comments/>
+                  <comments content="/**&#xA;     * @return boolean true if captcha is correct&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="doFilter">
-                  <comments/>
+                  <comments content="/**&#xA;     * @exception IOException if an input/output error occurs&#xA;     * @exception ServletException if a servlet error occurs&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getFilterConfig">
-                  <comments/>
+                  <comments content="/**&#xA;     * Return the filter configuration object for this filter.&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setFilterConfig">
-                  <comments/>
+                  <comments content="/**&#xA;     * Set the filter configuration object for this filter.&#xA;     *&#xA;     * @param filterConfig The filter configuration object&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="destroy"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="init"/>
@@ -170,11 +170,11 @@
               </ownedElements>
               <ownedPackages name="actions">
                 <ownedElements name="CatalogXmlAction">
-                  <comments/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="cf"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="COMMA"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="DOUBLE_QUOTE"/>
+                  <comments content="/**&#xA; * This action class serves up XML data for catalog.&#xA; * @author Greg Murray&#xA; * @author Mark Basler&#xA; * @author Inderjeet Singh&#xA; */"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="cf"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="COMMA"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="DOUBLE_QUOTE"/>
                   <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="CatalogXmlAction"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="service"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="handleItems"/>
@@ -183,43 +183,43 @@
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="handleCategories"/>
                 </ownedElements>
                 <ownedElements name="CaptchaAction">
-                  <comments/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="CAPTCHA_KEY"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="CAPTCHA_STRING"/>
+                  <comments content="/**&#xA; * This action class serves up captcha.&#xA; * @author Yutaka Yoshida&#xA; * @author Inderjeet Singh&#xA; */"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="CAPTCHA_KEY"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="CAPTCHA_STRING"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="service"/>
                   <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="CaptchaAction" proxy="true"/>
                 </ownedElements>
                 <ownedElements name="ImageAction">
-                  <comments/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="GIF_SUFFIX"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="JPG_SUFFIX"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="PNG_SUFFIX"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="context"/>
+                  <comments content="/**&#xA; * This action class serves up images. The care is taken to serve images that are user-generated&#xA; * @author Mark Basler&#xA; * @author Inderjeet Singh&#xA; */"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="GIF_SUFFIX"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="JPG_SUFFIX"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="PNG_SUFFIX"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="context"/>
                   <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="ImageAction"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="service"/>
                 </ownedElements>
                 <ownedElements name="TagXmlAction">
-                  <comments/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="cf"/>
+                  <comments content="/**&#xA; * This action class serves up XML needed for user-created Tags.&#xA; * @author Mark Basler&#xA; * @author Inderjeet Singh&#xA; */"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="cf"/>
                   <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="TagXmlAction"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="service"/>
                 </ownedElements>
                 <ownedElements name="DefaultControllerAction">
-                  <comments/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="CACHE">
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
-                    <comments/>
+                  <comments content="/**&#xA; * This action class provides the default handling of the controller&#xA; * @author Inderjeet Singh&#xA; */"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="CACHE">
+                    <comments content="// We use @SuppressWarnings annotation to supress the following kind of warning:"/>
+                    <comments content="// petstore/src/java/com/sun/javaee/blueprints/petstore/controller/actions/DefaultControllerAction.java:64: warning: [unchecked] unchecked cast"/>
+                    <comments content="// found   : java.lang.Object"/>
+                    <comments content="// required: java.util.HashMap&lt;java.lang.String,java.lang.StringBuffer>"/>
+                    <comments content="//                HashMap&lt;String, StringBuffer> cache = (HashMap&lt;String, StringBuffer>) context.getAttribute(CACHE);"/>
+                    <comments content="//"/>
+                    <comments content="// This is needed because the context.getAttribute() does not returns a generics version of objects."/>
+                    <comments content="// But since we are expecting a generic version (for example, HashMap&lt;String, StringBuffer>), we need to"/>
+                    <comments content="// typecast the result appropriately. However, since generics information is lost at the runtime,"/>
+                    <comments content="// there is no way to avoid a warning. Hence we use SuppressWarnings in this case."/>
                   </bodyDeclarations>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="CACHE_TIMES"/>
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="context"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="CACHE_TIMES"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="context"/>
                   <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="DefaultControllerAction"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="service"/>
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="getResource"/>
@@ -229,32 +229,32 @@
             </ownedPackages>
             <ownedPackages name="mapviewer">
               <ownedElements name="MapBean">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="alMapMarkers"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="mapMarker"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="mapPoint"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="items"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zoomLevel"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="category"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="itemIds"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="alMapMarkers"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="mapMarker"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="mapPoint"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="items"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zoomLevel"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="category"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="itemIds"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="MapBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of MapBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="init"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setItemIds">
-                  <comments/>
+                  <comments content="// search.jsp"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemIds"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCategories">
-                  <comments/>
+                  <comments content="// mapAll.jsp"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setCategory"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCategory"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setCenterAddress"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCenterAddress"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setMapMarker">
-                  <comments/>
+                  <comments content="// map.jsp fields"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getMapMarker"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setMapPoint"/>
@@ -279,10 +279,10 @@
             </ownedPackages>
             <ownedPackages name="model">
               <ownedElements name="SellerContactInfo">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="contactInfoID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="lastName"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="firstName"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="email"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="contactInfoID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="lastName"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="firstName"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="email"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SellerContactInfo"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SellerContactInfo"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getContactInfoID"/>
@@ -294,14 +294,14 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setLastName"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setFirstName"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="validateWithMessage">
-                  <comments/>
+                  <comments content="/**&#xA;     * This method checks to make sure the class values are valid&#xA;     *&#xA;     * @return Message(s) of validation errors or and empty array (zero length) if class is valid&#xA;     */"/>
                 </bodyDeclarations>
               </ownedElements>
               <ownedElements name="Tag">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="tagID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="items"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="tag"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="refCount"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="tagID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="items"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="tag"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="refCount"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Tag"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Tag"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getTagID"/>
@@ -316,15 +316,15 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="itemExists"/>
               </ownedElements>
               <ownedElements name="Address">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="addressID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="street1"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="street2"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="city"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="state"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zip"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="latitude"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="longitude"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="COMMA"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="addressID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="street1"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="street2"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="city"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="state"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zip"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="latitude"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="longitude"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="COMMA"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Address"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Address"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getAddressID"/>
@@ -345,26 +345,26 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setLongitude"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="addressToString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="validateWithMessage">
-                  <comments/>
+                  <comments content="/**&#xA;     * This method checks to make sure the class values are valid&#xA;     *&#xA;     * @return Message(s) of validation errors or and empty array (zero length) if class is valid&#xA;     */"/>
                 </bodyDeclarations>
               </ownedElements>
               <ownedElements name="FileUploadResponse">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="itemId"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="productId"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="message"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="status"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="duration"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="durationString"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="startDate"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="endDate"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="uploadSize"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="thumbnail"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="itemId"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="productId"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="message"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="status"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="duration"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="durationString"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="startDate"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="endDate"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="uploadSize"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="thumbnail"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="FileUploadResponse">
-                  <comments/>
+                  <comments content="/** Creates a new instance of FileUploadResponse */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="FileUploadResponse"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getMessage">
-                  <comments/>
+                  <comments content="/* get/set&#xA;     * message, status, duration, duration_string, start_date, end_date, upload_size, thumbnail&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setMessage"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemId"/>
@@ -387,10 +387,10 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setThumbnail"/>
               </ownedElements>
               <ownedElements name="Category">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="categoryID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="name"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="description"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="imageURL"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="categoryID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="name"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="description"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="imageURL"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Category"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCategoryID"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getName"/>
@@ -402,12 +402,12 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setDescription"/>
               </ownedElements>
               <ownedElements name="RatingBean">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="itemId"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="grade"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="cf"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="itemId"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="grade"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="cf"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="RatingBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of RatingBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getRatingText"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setGrade"/>
@@ -416,18 +416,18 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemId"/>
               </ownedElements>
               <ownedElements name="PayPalBean">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="postData"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="postData"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="PayPalBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of PayPalBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getPostData"/>
               </ownedElements>
               <ownedElements name="ZipLocation">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zipCode"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="city"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="state"/>
+                <comments content="/**&#xA; * This class represents the data used for autocomplete of a &#xA; * user input for zipcode, city, state.&#xA;*/"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zipCode"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="city"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="state"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="ZipLocation"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getZipCode"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCity"/>
@@ -437,19 +437,19 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setState"/>
               </ownedElements>
               <ownedElements name="Item">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="itemID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="productID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="name"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="description"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="imageURL"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="imageThumbURL"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="price"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="address"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="contactInfo"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="totalScore"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="numberOfVotes"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="disabled"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="tags"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="itemID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="productID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="name"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="description"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="imageURL"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="imageThumbURL"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="price"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="address"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="contactInfo"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="totalScore"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="numberOfVotes"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="disabled"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="tags"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Item"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Item"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemID"/>
@@ -479,21 +479,21 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getTags"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setTags"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="addRating">
-                  <comments/>
+                  <comments content="/*Business Methods&#xA;     **/"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="checkAverageRating"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="tagsAsString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="containsTag"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="validateWithMessage">
-                  <comments/>
+                  <comments content="/**&#xA;     * This method checks to make sure the class values are valid&#xA;     *&#xA;     * @return Message(s) of validation errors or and empty array (zero length) if class is valid&#xA;     */"/>
                 </bodyDeclarations>
               </ownedElements>
               <ownedElements name="Product">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="productID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="categoryID"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="name"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="description"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="imageURL"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="productID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="categoryID"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="name"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="description"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="imageURL"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Product"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Product"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProductID"/>
@@ -508,23 +508,23 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setImageURL"/>
               </ownedElements>
               <ownedElements name="CatalogFacade">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="emf">
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="emf">
+                  <comments content="// This class uses @SuppressWarnings annotation to supress the following kind of warnings: "/>
+                  <comments content="// "/>
+                  <comments content="// petstore/src/java/com/sun/javaee/blueprints/petstore/model/CatalogFacade.java:240: warning: [unchecked] unchecked conversion"/>
+                  <comments content="// found   : java.util.List"/>
+                  <comments content="// required: java.util.List&lt;com.sun.javaee.blueprints.petstore.model.Product>"/>
+                  <comments content="//    .setParameter(&quot;categoryID&quot;, catID).getResultList();"/>
+                  <comments content="//"/>
+                  <comments content="// This is needed because the Query.getResultList() does not returns a generics version of objects. "/>
+                  <comments content="// But since we are expecting a generic version (for example, List&lt;Categories>), we need to"/>
+                  <comments content="// typecast the result appropriately. However, since generics information is lost at the runtime, "/>
+                  <comments content="// there is no way to avoid a warning. Hence we use SuppressWarnings in this case"/>
                 </bodyDeclarations>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="utx">
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="utx">
+                  <comments content="//@Resource "/>
                 </bodyDeclarations>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="CatalogFacade"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="contextDestroyed"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="contextInitialized"/>
@@ -532,32 +532,32 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProducts"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getAllItemsFromCategory"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemInChunkVLH">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. The Chunk return contains an item with iID or nothing is returned. Uses the Java Persistence query language.&#xA;     * @param pID is the product id that the item belongs to&#xA;     * @param start position of the first result, numbered from 0&#xA;     * @param chunkSize the maximum number of results to retrieve&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemsVLH">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. Uses the Java Persistence query language.&#xA;     * @param pID is the product id that the item belongs to&#xA;     * @param start position of the first result, numbered from 0&#xA;     * @param chunkSize the maximum number of results to retrieve&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemsByItemID">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. Found by item ID&#xA;     * @param IDs is an array of item ids for specific items that need to be returned&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemsByItemIDByRadius">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. Found by item ID and radius&#xA;     * @param IDs is an array of item ids for specific items that need to be returned&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemsByCategoryVLH">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. Found by category&#xA;     * @param categoryID is the category id that the item belongs to&#xA;     * @param start position of the first result, numbered from 0&#xA;     * @param chunkSize the maximum number of results to retrieve&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItemsByCategoryByRadiusVLH">
-                  <comments/>
+                  <comments content="/**&#xA;     * Value List Handler for items. Found by category and location radius&#xA;     * @param categoryID is the category id that the item belongs to&#xA;     * @param start position of the first result, numbered from 0&#xA;     * @param chunkSize the maximum number of results to retrieve&#xA;     * @returns a List of Item objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getZipCodeLocations">
-                  <comments/>
+                  <comments content="/**&#xA;     * Gets a list of all the zipcode/city/state for autocomplete on user forms&#xA;     * Need to enhance so that returned list is cached for reuse at application scope&#xA;     * and held as member field of facade.&#xA;     * @returns a List of ZipLocation objects&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProducts"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItems"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCategory"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getItem"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="addItem">
-                  <comments/>
+                  <comments content="/**&#xA;     * Method to add an item with tags that are added using the addTag method&#xA;     *&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="updateItem"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="doSearch"/>
@@ -570,16 +570,16 @@
             </ownedPackages>
             <ownedPackages name="proxy">
               <ownedElements name="GeoPoint">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="latitude"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="longitude"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="address"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="city"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="state"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="zip"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="country"/>
+                <comments content="/**&#xA; * &lt;p>JavaBean describing a single result returned by the GeoCoding service.&#xA; * All of the properties are optional.&lt;/p>&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="latitude"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="longitude"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="address"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="city"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="state"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="zip"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="country"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getLatitude">
-                  <comments/>
+                  <comments content="// -------------------------------------------------------------- Properties"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setLatitude"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getLongitude"/>
@@ -595,79 +595,79 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getCountry"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setCountry"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="toString">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Return a concise description of the location of this point (without&#xA;     * including the latitude and longitude).&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="GeoPoint" proxy="true"/>
               </ownedElements>
               <ownedElements name="GeoCoder">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="applicationId"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="logger"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="proxyHost"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="proxyPort"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="proxySet"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="APPLICATION_ID">
-                  <comments/>
-                  <comments/>
+                <comments content="/**&#xA; * &lt;p>Service object that interacts with the Yahoo GeoCoding service.  For&#xA; * information on the relevant APIs, see &lt;a href=&quot;http://developer.yahoo.net/maps/rest/V1/geocode.html&quot;>&#xA; * http://developer.yahoo.net/maps/rest/V1/geocode.html&lt;/a>.&lt;/p>&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="applicationId"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="logger"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="proxyHost"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="proxyPort"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="proxySet"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="APPLICATION_ID">
+                  <comments content="// ------------------------------------------------------ Manifest Constants"/>
+                  <comments content="/**&#xA;     * &lt;p>The default application identifier required by the geocoding&#xA;     * service.  This may be overridden by setting the &lt;code>applicationId&lt;/code>&#xA;     * property.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="SERVICE_URL">
-                  <comments/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="SERVICE_URL">
+                  <comments content="/**&#xA;     * &lt;p>The URL of the geocoding service we will be using.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getApplicationId">
-                  <comments/>
-                  <comments/>
+                  <comments content="// -------------------------------------------------------------- Properties"/>
+                  <comments content="/**&#xA;     * &lt;p>Return the application identifier to be passed to the geocoding&#xA;     * service.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setApplicationId">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Set the application identifier to be passed to the geocoding&#xA;     * service.&lt;/p>&#xA;     *&#xA;     * @param applicationId The new application identifier&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProxyHost">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Return the proxy host to use for network connections, or &lt;code>null&lt;/code>&#xA;     * if the default proxy host for the application server's JVM should be&#xA;     * used instead.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setProxyHost">
-                  <comments/>
+                  <comments content="/**&#xA;     * Set the proxy host to use for network connections, or &lt;code>null&lt;/code>&#xA;     * to use the default proxy host for the application server's JVM.&lt;/p>&#xA;     *&#xA;     * @param proxyHost The new proxy host&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProxyPort">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Return the proxy port to use for network connections, or &lt;code>0&lt;/code>&#xA;     * if the default proxy port for the application server's JVM should be&#xA;     * used instead.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setProxyPort">
-                  <comments/>
+                  <comments content="/**&#xA;     * Set the proxy port to use for network connections, or &lt;code>0&lt;/code>&#xA;     * to use the default proxy port for the application server's JVM.&lt;/p>&#xA;     *&#xA;     * @param proxyPort The new proxy port&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="geoCode">
-                  <comments/>
-                  <comments/>
+                  <comments content="// ---------------------------------------------------------- Public Methods"/>
+                  <comments content="/**&#xA;     * &lt;p>Return an array of zero or more {@link GeoPoint} instances for results&#xA;     * that match a search for the specified location string.  This string can&#xA;     * be formatted in any of the following ways:&lt;/p>&#xA;     * &lt;ul>&#xA;     * &lt;li>city, state&lt;/li>&#xA;     * &lt;li>city, state, zip&lt;/li>&#xA;     * &lt;li>zip&lt;/li>&#xA;     * &lt;li>street, city, state&lt;/li>&#xA;     * &lt;li>street, city, state, zip&lt;/li>&#xA;     * &lt;li>street, zip&lt;/li>&#xA;     * &lt;/ul>&#xA;     *&#xA;     * @param location Location string to search for&#xA;     *&#xA;     * @exception IllegalArgumentException if &lt;code>location&lt;/code> does not&#xA;     *  conform to one of the specified patterns&#xA;     * @exception NullPointerException if &lt;code>location&lt;/code> is &lt;code>null&lt;/code>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="convertResults">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Convert the parsed XML results into the appropriate output from&#xA;     * our &lt;code>geoCode()&lt;/code> method.  If there were no results (and no&#xA;     * exception was thrown), a zero-length array will be returned.&lt;/p>&#xA;     *&#xA;     * @param document Parsed XML document representing the response from&#xA;     *  the geocoding service&#xA;     *&#xA;     * @exception IllegalArgumentException if an unrecognized XML element&#xA;     *  is encountered&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="parseResponse">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Parse the XML content at the specified URL into an XML&#xA;     * &lt;code>Document&lt;/code>, which can be further processed to extract&#xA;     * the necessary content.&lt;/p>&#xA;     *&#xA;     * &lt;p>&lt;strong>FIXME&lt;/strong> - only uses implied JVM-wide proxy,&#xA;     * so needs to be modified for Java SE 5.&lt;/p>&#xA;     *&#xA;     * @param url URL of the resource to be parsed&#xA;     *&#xA;     * @exception IOException if an input/output error occurs&#xA;     * @exception MalformedURLException if the specified URL is invalid&#xA;     * @exception ParserConfigurationException if thrown by the XML parser&#xA;     *  configuration mechanism&#xA;     * @exception SAXException if a parsing error occurs&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setProxyConfiguration">
-                  <comments/>
+                  <comments content="/**&#xA;     * &lt;p>Attempt to set the system properties related to the HTTP proxy host&#xA;     * and port to be used, but swallow security exceptions if the security&#xA;     * policy that our container is running under forbids this.  In a JDK 1.5&#xA;     * environment, we'll be able to use the &lt;code>java.net.Proxy&lt;/code> class&#xA;     * and deal with this on a per-connection basis.  Until then, oh well.&lt;/p>&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="GeoCoder" proxy="true"/>
               </ownedElements>
             </ownedPackages>
             <ownedPackages name="search">
               <ownedElements name="Indexer">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="writer"/>
+                <comments content="/**&#xA; * This class is used to encapsulate the Lucene functionality&#xA; * for the Petstore application.  It is strictly used to loosely couple&#xA; * the search with the Lucene engine for indexing&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="writer"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Indexer">
-                  <comments/>
+                  <comments content="/** Creates a new instance of Indexer */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Indexer">
-                  <comments/>
+                  <comments content="/** Creates a new instance of Indexer */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="addDocument"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getWriter"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="close"/>
               </ownedElements>
               <ownedElements name="IndexDocument">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="uid"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="modifiedDate"/>
+                <comments content="/**&#xA; * This class is a simple stuctured used to hold petstore indexed info for indexing and search&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="uid"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="modifiedDate"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="IndexDocument">
-                  <comments/>
+                  <comments content="/** Creates a new instance of indexDocuments */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="IndexDocument"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="IndexDocument"/>
@@ -698,12 +698,12 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="toString"/>
               </ownedElements>
               <ownedElements name="SearchBean">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="searchString"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="searchTags"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="hitsList"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="searchString"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="searchTags"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="hitsList"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SearchBean">
-                  <comments/>
+                  <comments content="/** Creates a new instance of SearchBean */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setSearchString"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getSearchString"/>
@@ -715,43 +715,43 @@
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="searchAction"/>
               </ownedElements>
               <ownedElements name="UpdateIndex">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="REPLACE_FIELD"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="APPEND_FIELD"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="REPLACE_FIELD"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="APPEND_FIELD"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="UpdateIndex">
-                  <comments/>
+                  <comments content="/** Creates a new instance of UpdateIndex */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="updateDocTag"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="deleteIndex"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="main"/>
               </ownedElements>
               <ownedElements name="HTMLParser">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <comments content="/**&#xA; * This class can crawl a web site indexing appropriate data as best as possible&#xA; * The best way to make use page is indexed with the correct info is to use meta tags in each page&#xA; * and the robots.txt file to index only to appropriate pages&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="main"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="HTMLParser">
-                  <comments/>
+                  <comments content="/** Creates a new instance of HTMLParser */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="runWeb"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getRobots"/>
               </ownedElements>
               <ownedElements name="SQLParser">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SQLParser">
-                  <comments/>
+                  <comments content="/** Creates a new instance of SQLParser */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="runSQL"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="main"/>
               </ownedElements>
               <ownedElements name="SearchIndex">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="bDebug"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="hitsList"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="hits"/>
+                <comments content="/**&#xA; * Base search mechanism for Petstore indexes created from the database data&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="bDebug"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="hitsList"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="hits"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="SearchIndex">
-                  <comments/>
+                  <comments content="/** Creates a new instance of SearchIndex */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="query"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="query"/>
@@ -762,59 +762,59 @@
             </ownedPackages>
             <ownedPackages name="util">
               <ownedElements name="PetstoreUtil">
-                <comments/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="_logger"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="_resBundle"/>
+                <comments content="/**&#xA; *&#xA; * @author basler&#xA; */"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="_logger"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="_resBundle"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="PetstoreUtil">
-                  <comments/>
+                  <comments content="/** Creates a new instance of PetstoreUtil */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getLogger"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getBaseLogger">
-                  <comments/>
+                  <comments content="/**&#xA;     * This method returns the default logger for the petstore application&#xA;     *&#xA;     * @return Default Logger for petstore application&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getBaseBundle"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getMessage"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="getMessage">
-                  <comments/>
+                  <comments content="/**&#xA;     * This method uses the default message strings property file to resolve&#xA;     * resultant string to show to an end user&#xA;     * @param Key to use in MessageString.properties file&#xA;     *&#xA;     * @return Formated message for external display&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="closeIgnoringException"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="encodeJSONString"/>
               </ownedElements>
               <ownedElements name="ImageScaler">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="thumbWidth"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="thumbHeight"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="format"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="image"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="thumbWidth"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="thumbHeight"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="format"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="image"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="ImageScaler">
-                  <comments/>
+                  <comments content="/** Creates a new instance of ImageScaler */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="ImageScaler">
-                  <comments/>
+                  <comments content="/* constructor with the target image size&#xA;     * @param width Width of the target image&#xA;     * @param height Height of the target image&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="keepAspectWithWidth">
-                  <comments/>
+                  <comments content="/* must be called before resize method&#xA;     * when it is necessary to keep the aspect ratio&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="keepAspectWithHeight"/>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="resizeWithScaledInstance">
-                  <comments/>
+                  <comments content="/* Using getScaledInstance&#xA;     * good quality, but very slow&#xA;     * @param from the path of the original image&#xA;     * @param to the path of the target thumbnail&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="resizeWithGraphics">
-                  <comments/>
+                  <comments content="/* Using Graphics2D&#xA;     * medium quality, fast&#xA;     * @param from the path of the original image&#xA;     * @param to the path of the target thumbnail&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="resizeWithAffineTransform">
-                  <comments/>
+                  <comments content="/* Using Affine transform&#xA;     * for transform with power(0.5, etc.). fastest.&#xA;     * @param from the path of the original image&#xA;     * @param to the path of the target thumbnail&#xA;     * @param power to rescale(0.25, 0.5...)&#xA;     */"/>
                 </bodyDeclarations>
                 <bodyDeclarations xsi:type="data:MethodDeclaration" name="setFileFormat">
-                  <comments/>
+                  <comments content="/* setting the target file format&#xA;     * @param format specifying the image format, such as &quot;jpg&quot;&#xA;     */"/>
                 </bodyDeclarations>
               </ownedElements>
               <ownedElements name="PetstoreConstants">
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="PETSTORE_INDEX_DIRECTORY"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="PETSTORE_IMAGE_DIRECTORY"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="PETSTORE_BASE_LOGGER"/>
-                <bodyDeclarations xsi:type="data:FiedDeclaration" name="PETSTORE_BASE_LOG_STRINGS"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="PETSTORE_INDEX_DIRECTORY"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="PETSTORE_IMAGE_DIRECTORY"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="PETSTORE_BASE_LOGGER"/>
+                <bodyDeclarations xsi:type="data:FieldDeclaration" name="PETSTORE_BASE_LOG_STRINGS"/>
                 <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="PetstoreConstants">
-                  <comments/>
+                  <comments content="/** private constructor to enforce only constants class */"/>
                 </bodyDeclarations>
               </ownedElements>
             </ownedPackages>
@@ -842,7 +842,7 @@
                   <bodyDeclarations xsi:type="data:MethodDeclaration" name="setMessage" proxy="true"/>
                 </ownedElements>
                 <ownedElements name="FileUploadUtil" proxy="true">
-                  <bodyDeclarations xsi:type="data:FiedDeclaration" name="COMPONENT_NAME" proxy="true"/>
+                  <bodyDeclarations xsi:type="data:FieldDeclaration" name="COMPONENT_NAME" proxy="true"/>
                 </ownedElements>
               </ownedPackages>
               <ownedPackages name="geocoder" proxy="true">
@@ -890,11 +890,11 @@
     <ownedPackages name="awt" proxy="true">
       <ownedElements name="Color" proxy="true">
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Color" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="GRAY" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="GRAY" proxy="true"/>
       </ownedElements>
       <ownedElements name="Font" proxy="true">
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="BOLD" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="ITALIC" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="BOLD" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="ITALIC" proxy="true"/>
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Font" proxy="true"/>
       </ownedElements>
       <ownedElements name="Graphics" proxy="true">
@@ -909,7 +909,7 @@
       </ownedElements>
       <ownedElements name="Image" proxy="true">
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="getScaledInstance" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="SCALE_AREA_AVERAGING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="SCALE_AREA_AVERAGING" proxy="true"/>
       </ownedElements>
       <ownedElements name="Toolkit" proxy="true">
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="getDefaultToolkit" proxy="true"/>
@@ -919,28 +919,28 @@
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="setRenderingHint" proxy="true"/>
       </ownedElements>
       <ownedElements name="RenderingHints" proxy="true">
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_ALPHA_INTERPOLATION" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_ALPHA_INTERPOLATION_QUALITY" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_ANTIALIASING" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_ANTIALIAS_ON" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_COLOR_RENDERING" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_COLOR_RENDER_QUALITY" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_DITHERING" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_DITHER_ENABLE" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_FRACTIONALMETRICS" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_FRACTIONALMETRICS_ON" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_INTERPOLATION" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_INTERPOLATION_BILINEAR" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_RENDERING" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_RENDER_QUALITY" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_STROKE_CONTROL" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_STROKE_NORMALIZE" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="KEY_TEXT_ANTIALIASING" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="VALUE_TEXT_ANTIALIAS_ON" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_ALPHA_INTERPOLATION" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_ALPHA_INTERPOLATION_QUALITY" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_ANTIALIASING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_ANTIALIAS_ON" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_COLOR_RENDERING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_COLOR_RENDER_QUALITY" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_DITHERING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_DITHER_ENABLE" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_FRACTIONALMETRICS" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_FRACTIONALMETRICS_ON" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_INTERPOLATION" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_INTERPOLATION_BILINEAR" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_RENDERING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_RENDER_QUALITY" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_STROKE_CONTROL" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_STROKE_NORMALIZE" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="KEY_TEXT_ANTIALIASING" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="VALUE_TEXT_ANTIALIAS_ON" proxy="true"/>
       </ownedElements>
       <ownedPackages name="image" proxy="true">
         <ownedElements name="BufferedImage" proxy="true">
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="TYPE_INT_RGB" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="TYPE_INT_RGB" proxy="true"/>
           <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="BufferedImage" proxy="true"/>
           <bodyDeclarations xsi:type="data:MethodDeclaration" name="getGraphics" proxy="true"/>
           <bodyDeclarations xsi:type="data:MethodDeclaration" name="getSource" proxy="true"/>
@@ -954,10 +954,10 @@
         </ownedElements>
         <ownedElements name="ImageFilter" proxy="true"/>
         <ownedElements name="RGBImageFilter" proxy="true">
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="canFilterIndexColorModel" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="canFilterIndexColorModel" proxy="true"/>
         </ownedElements>
         <ownedElements name="AffineTransformOp" proxy="true">
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="TYPE_BILINEAR" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="TYPE_BILINEAR" proxy="true"/>
           <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="AffineTransformOp" proxy="true"/>
           <bodyDeclarations xsi:type="data:MethodDeclaration" name="filter" proxy="true"/>
         </ownedElements>
@@ -1086,7 +1086,7 @@
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="toString" proxy="true"/>
       </ownedElements>
       <ownedElements name="System" proxy="true">
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="out" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="out" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="getProperty" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="setProperty" proxy="true"/>
       </ownedElements>
@@ -1104,8 +1104,8 @@
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="StringBuilder" proxy="true"/>
       </ownedElements>
       <ownedElements name="Boolean" proxy="true">
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="FALSE" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="TRUE" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="FALSE" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="TRUE" proxy="true"/>
       </ownedElements>
       <ownedElements name="NullPointerException" proxy="true">
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="NullPointerException" proxy="true"/>
@@ -1164,7 +1164,7 @@
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Date" proxy="true"/>
       </ownedElements>
       <ownedElements name="Locale" proxy="true">
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="US" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="US" proxy="true"/>
       </ownedElements>
       <ownedElements name="Vector" proxy="true">
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="Vector" proxy="true"/>
@@ -1185,10 +1185,10 @@
       </ownedElements>
       <ownedPackages name="logging" proxy="true">
         <ownedElements name="Level" proxy="true">
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="SEVERE" proxy="true"/>
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="FINE" proxy="true"/>
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="INFO" proxy="true"/>
-          <bodyDeclarations xsi:type="data:FiedDeclaration" name="WARNING" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="SEVERE" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="FINE" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="INFO" proxy="true"/>
+          <bodyDeclarations xsi:type="data:FieldDeclaration" name="WARNING" proxy="true"/>
         </ownedElements>
         <ownedElements name="Logger" proxy="true">
           <bodyDeclarations xsi:type="data:MethodDeclaration" name="log" proxy="true"/>
@@ -1222,7 +1222,7 @@
       <ownedElements name="BigDecimal" proxy="true">
         <bodyDeclarations xsi:type="data:ConstructorDeclaration" name="BigDecimal" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="setScale" proxy="true"/>
-        <bodyDeclarations xsi:type="data:FiedDeclaration" name="ROUND_HALF_UP" proxy="true"/>
+        <bodyDeclarations xsi:type="data:FieldDeclaration" name="ROUND_HALF_UP" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="valueOf" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="intValue" proxy="true"/>
         <bodyDeclarations xsi:type="data:MethodDeclaration" name="toString" proxy="true"/>

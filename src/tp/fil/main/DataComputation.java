@@ -78,7 +78,7 @@ public class DataComputation {
 			packageClass = (EClass) dataPackage.getEClassifier("Package");
 			commentsClass = (EClass) dataPackage.getEClassifier("Comment");
 			classDeclarationClass = (EClass) dataPackage.getEClassifier("Classe");
-			fieldDeclarationClass = (EClass) dataPackage.getEClassifier("FiedDeclaration");
+			fieldDeclarationClass = (EClass) dataPackage.getEClassifier("FieldDeclaration");
 			methodDeclerationClass = (EClass) dataPackage.getEClassifier("MethodDeclaration");
 			constructorDeclarationClass = (EClass) dataPackage.getEClassifier("ConstructorDeclaration");
 
@@ -199,9 +199,15 @@ public class DataComputation {
 
 	private static List<EObject> transfoComments(List<Comment> comments) {
 		List<EObject> commentsD = new ArrayList<>();
-		for (Comment p : comments) {
-			EObject classDeclarationObject = dataPackage.getEFactoryInstance().create(commentsClass);
-			commentsD.add(classDeclarationObject);
+		for (Comment c : comments) {
+			EObject commentObject = dataPackage.getEFactoryInstance().create(commentsClass);
+
+			EStructuralFeature contentFeat = c.eClass().getEStructuralFeature("content");
+			EStructuralFeature contentFeatD = commentsClass.getEStructuralFeature("content");
+			String content = (String) c.eGet(contentFeat);
+			commentObject.eSet(contentFeatD, content);
+			
+			commentsD.add(commentObject);
 
 		}
 		return commentsD;

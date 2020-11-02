@@ -111,7 +111,7 @@ public class DataComputation {
 			 */
 
 			// Serialize Data model
-			dataModel.save(new FileOutputStream("javaOutput.xmi"), null);
+			dataModel.save(new FileOutputStream("PetStore_JavaOutput.xmi"), null);
 
 			// Unload models
 			javaModel.unload();
@@ -221,6 +221,9 @@ public class DataComputation {
 				String name = ((FieldDeclaration) p).getFragments().get(0).getName();
 				fieldObject.eSet(fieldDeclarationClass.getEStructuralFeature("name"), name);
 
+				String type = ((FieldDeclaration) p).getAbstractTypeDeclaration().getName();
+				fieldObject.eSet(fieldDeclarationClass.getEStructuralFeature("type"), type);
+				
 				getProxyAndComment(p, fieldObject);
 				bodyDeclarationsD.add(fieldObject);
 

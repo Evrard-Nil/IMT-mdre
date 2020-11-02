@@ -9,18 +9,15 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="generateSQL" visibility="Public" main="true">
       <body xsi:type="mtl:FileBlock" openMode="OverWrite">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
-        <body xsi:type="mtl:ForBlock">
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;CREATE TABLE&#xA;"/>
-          <loopVariable name="aPackage">
-            <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
-          </loopVariable>
-          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Package)">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+        <body xsi:type="mtl:TemplateInvocation" definition="/0/processPackages">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <argument xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Package)">
             <source xsi:type="ocl.ecore:VariableExp" name="model" referredVariable="/0/generateSQL/model">
               <eType xsi:type="ecore:EClass" href="http://data#//Model"/>
             </source>
             <referredProperty xsi:type="ecore:EReference" href="http://data#//Model/ownedElements"/>
-          </iterSet>
+          </argument>
         </body>
         <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
         <fileUrl xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PetStore_database.sql">
@@ -36,7 +33,6 @@
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Template" name="processPackages" visibility="Public">
       <body xsi:type="mtl:ForBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;"/>
         <body xsi:type="mtl:TemplateInvocation" definition="/0/processPackages">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <argument xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Package)">
@@ -52,7 +48,133 @@
         </loopVariable>
         <iterSet xsi:type="ocl.ecore:VariableExp" name="aPackages" eType="/3/OrderedSet(Package)" referredVariable="/0/processPackages/aPackages"/>
       </body>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="mtl:TemplateInvocation" definition="/0/processClasses">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <argument xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(Classe)">
+              <source xsi:type="ocl.ecore:VariableExp" name="aPackage" referredVariable="/0/processPackages/%.1/aPackage">
+                <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+              </source>
+              <referredProperty xsi:type="ecore:EReference" href="http://data#//Package/ownedElements"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aPackage" referredVariable="/0/processPackages/%.1/aPackage">
+                <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://data#//NamedElement/name"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="model">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+          </ifExpr>
+        </body>
+        <loopVariable name="aPackage">
+          <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:VariableExp" name="aPackages" eType="/3/OrderedSet(Package)" referredVariable="/0/processPackages/aPackages"/>
+      </body>
       <parameter name="aPackages" eType="/3/OrderedSet(Package)"/>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Template" name="processClasses" visibility="Public">
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="CREATE TABLE "/>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aClass" referredVariable="/0/processClasses/%/aClass">
+            <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://data#//NamedElement/name"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" (&#xA;"/>
+        <body xsi:type="mtl:ForBlock">
+          <body xsi:type="mtl:IfBlock">
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="field" referredVariable="/0/processClasses/%/%.3/field">
+                <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://data#//NamedElement/name"/>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" : "/>
+            <body xsi:type="mtl:QueryInvocation" definition="/0/toSqlType">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <argument xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+                <source xsi:type="ocl.ecore:OperationCallExp">
+                  <eType xsi:type="ecore:EClass" href="http://data#//FieldDeclaration"/>
+                  <source xsi:type="ocl.ecore:VariableExp" name="field" referredVariable="/0/processClasses/%/%.3/field">
+                    <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+                  </source>
+                  <argument xsi:type="ocl.ecore:TypeExp" eType="/34/FieldDeclaration">
+                    <referredType xsi:type="ecore:EClass" href="http://data#//FieldDeclaration"/>
+                  </argument>
+                  <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclAsType"/>
+                </source>
+                <referredProperty xsi:type="ecore:EAttribute" href="http://data#//FieldDeclaration/type"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="field" referredVariable="/0/processClasses/%/%.3/field">
+                <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+              </source>
+              <argument xsi:type="ocl.ecore:TypeExp" eType="/34/FieldDeclaration">
+                <referredType xsi:type="ecore:EClass" href="http://data#//FieldDeclaration"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny_Class/oclIsTypeOf"/>
+            </ifExpr>
+          </body>
+          <loopVariable name="field">
+            <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+          </loopVariable>
+          <iterSet xsi:type="ocl.ecore:PropertyCallExp" eType="/3/OrderedSet(BodyDeclaration)">
+            <source xsi:type="ocl.ecore:VariableExp" name="aClass" referredVariable="/0/processClasses/%/aClass">
+              <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://data#//Classe/bodyDeclarations"/>
+          </iterSet>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=");&#xA;&#xA;"/>
+        <loopVariable name="aClass">
+          <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:VariableExp" name="aClasses" eType="/3/OrderedSet(Classe)" referredVariable="/0/processClasses/aClasses"/>
+      </body>
+      <parameter name="aClasses" eType="/3/OrderedSet(Classe)"/>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Query" name="toSqlType" visibility="Public">
+      <parameter name="t">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </parameter>
+      <expression xsi:type="ocl.ecore:IfExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <condition xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="t" referredVariable="/0/toSqlType/t">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </source>
+          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="String">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String_Class/="/>
+        </condition>
+        <thenExpression xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="VARCHAR(255)">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </thenExpression>
+        <elseExpression xsi:type="ocl.ecore:VariableExp" name="t" referredVariable="/0/toSqlType/t">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </elseExpression>
+      </expression>
+      <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
     </ownedModuleElement>
   </mtl:Module>
   <ecore:EPackage name="additions">
@@ -93,6 +215,24 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="aPackages" eType="/3/OrderedSet(Package)"/>
       </eOperations>
+      <eOperations name="processClasses">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/processClasses"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aClasses" eType="/3/OrderedSet(Classe)"/>
+      </eOperations>
+      <eOperations name="toSqlType">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/toSqlType"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="t">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -122,6 +262,9 @@
     <eClassifiers xsi:type="ecore:EClass" name="collections_OrderedSet(Package)_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/OrderedSet(Package)"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="collections_OrderedSet(Classe)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/OrderedSet(Classe)"/>
+    </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
@@ -129,6 +272,12 @@
   <ecore:EPackage name="collections">
     <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Package)" instanceClassName="java.util.LinkedHashSet">
       <elementType xsi:type="ecore:EClass" href="http://data#//Package"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Classe)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(BodyDeclaration)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
@@ -150,15 +299,6 @@
     <eType xsi:type="ecore:EClass" href="http://data#//Model"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://data#//Model"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="i">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Package)"/>
@@ -177,6 +317,74 @@
   <ocl.ecore:Variable name="i">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
   </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Package)"/>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Package"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Package)"/>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Classe)"/>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Classe)"/>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Classe)"/>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="FieldDeclaration">
+      <referredType xsi:type="ecore:EClass" href="http://data#//FieldDeclaration"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//BodyDeclaration"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://data#//Classe"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/OrderedSet(Classe)"/>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
@@ -187,114 +395,339 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/generateSQL">
-      <details key="start" value="138"/>
-      <details key="end" value="344"/>
-      <details key="line" value="5"/>
+      <details key="start" value="137"/>
+      <details key="end" value="309"/>
+      <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generateSQL/%">
-      <details key="start" value="201"/>
-      <details key="end" value="332"/>
-      <details key="line" value="7"/>
+      <details key="start" value="200"/>
+      <details key="end" value="297"/>
+      <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/generateSQL/%/%">
-      <details key="start" value="250"/>
-      <details key="end" value="252"/>
-      <details key="line" value="8"/>
+      <details key="start" value="249"/>
+      <details key="end" value="250"/>
+      <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.4" references="/0/generateSQL/%/%.1">
-      <details key="start" value="253"/>
-      <details key="end" value="323"/>
-      <details key="line" value="9"/>
+      <details key="start" value="251"/>
+      <details key="end" value="287"/>
+      <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generateSQL/%/%.1/%">
-      <details key="start" value="302"/>
-      <details key="end" value="316"/>
+      <details key="start" value="267"/>
+      <details key="end" value="286"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateSQL/%/%.1/%/model">
+      <details key="start" value="267"/>
+      <details key="end" value="272"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateSQL/%/%.2">
+      <details key="start" value="289"/>
+      <details key="end" value="290"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateSQL/%/%.3">
+      <details key="start" value="207"/>
+      <details key="end" value="230"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateSQL/%/%.4">
+      <details key="start" value="239"/>
+      <details key="end" value="246"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateSQL/model">
+      <details key="start" value="166"/>
+      <details key="end" value="179"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/processPackages">
+      <details key="start" value="310"/>
+      <details key="end" value="604"/>
       <details key="line" value="10"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/generateSQL/%/%.1/aPackage">
-      <details key="start" value="259"/>
-      <details key="end" value="277"/>
-      <details key="line" value="9"/>
+    <eAnnotations source="positions.12" references="/0/processPackages/%">
+      <details key="start" value="377"/>
+      <details key="end" value="465"/>
+      <details key="line" value="11"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/generateSQL/%/%.1/%.1">
-      <details key="start" value="280"/>
-      <details key="end" value="299"/>
+    <eAnnotations source="positions.13" references="/0/processPackages/%/%">
+      <details key="start" value="417"/>
+      <details key="end" value="456"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/generateSQL/%/%.1/%.1/model">
-      <details key="start" value="280"/>
-      <details key="end" value="285"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/generateSQL/%/%.2">
-      <details key="start" value="324"/>
-      <details key="end" value="325"/>
-      <details key="line" value="12"/>
-    </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/generateSQL/%/%.3">
-      <details key="start" value="208"/>
-      <details key="end" value="231"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/generateSQL/%/%.4">
-      <details key="start" value="240"/>
-      <details key="end" value="247"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/generateSQL/model">
-      <details key="start" value="167"/>
-      <details key="end" value="180"/>
-      <details key="line" value="5"/>
-    </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/processPackages">
-      <details key="start" value="346"/>
-      <details key="end" value="517"/>
-      <details key="line" value="16"/>
-    </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/processPackages/%">
-      <details key="start" value="414"/>
-      <details key="end" value="505"/>
-      <details key="line" value="17"/>
-    </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/processPackages/%/%">
-      <details key="start" value="453"/>
+    <eAnnotations source="positions.14" references="/0/processPackages/%/%/%">
+      <details key="start" value="433"/>
       <details key="end" value="455"/>
-      <details key="line" value="18"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/processPackages/%/%/%/aPackage">
+      <details key="start" value="433"/>
+      <details key="end" value="441"/>
+      <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/processPackages/%/%.1">
-      <details key="start" value="456"/>
-      <details key="end" value="495"/>
+      <details key="start" value="458"/>
+      <details key="end" value="459"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/processPackages/%/aPackage">
+      <details key="start" value="383"/>
+      <details key="end" value="401"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/processPackages/%/aPackages">
+      <details key="start" value="404"/>
+      <details key="end" value="413"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/processPackages/%/%.1/%">
-      <details key="start" value="472"/>
-      <details key="end" value="494"/>
+    <eAnnotations source="positions.19" references="/0/processPackages/%.1">
+      <details key="start" value="466"/>
+      <details key="end" value="592"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/processPackages/%.1/%">
+      <details key="start" value="506"/>
+      <details key="end" value="585"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/processPackages/%.1/%/%">
+      <details key="start" value="538"/>
+      <details key="end" value="576"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/processPackages/%/%.1/%/aPackage">
-      <details key="start" value="472"/>
-      <details key="end" value="480"/>
+    <eAnnotations source="positions.22" references="/0/processPackages/%.1/%/%/%">
+      <details key="start" value="553"/>
+      <details key="end" value="575"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/processPackages/%/%.2">
-      <details key="start" value="497"/>
-      <details key="end" value="498"/>
-      <details key="line" value="19"/>
+    <eAnnotations source="positions.23" references="/0/processPackages/%.1/%/%/%/aPackage">
+      <details key="start" value="553"/>
+      <details key="end" value="561"/>
+      <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/processPackages/%/aPackage">
-      <details key="start" value="420"/>
-      <details key="end" value="438"/>
+    <eAnnotations source="positions.24" references="/0/processPackages/%.1/%/%.1">
+      <details key="start" value="578"/>
+      <details key="end" value="579"/>
       <details key="line" value="17"/>
     </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/processPackages/%/aPackages">
-      <details key="start" value="441"/>
-      <details key="end" value="450"/>
+    <eAnnotations source="positions.25" references="/0/processPackages/%.1/%/%.2">
+      <details key="start" value="510"/>
+      <details key="end" value="535"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/processPackages/aPackages">
-      <details key="start" value="379"/>
-      <details key="end" value="410"/>
-      <details key="line" value="16"/>
+    <eAnnotations source="positions.26" references="/0/processPackages/%.1/%/%.2/%">
+      <details key="start" value="511"/>
+      <details key="end" value="524"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/processPackages/%.1/%/%.2/%/aPackage">
+      <details key="start" value="511"/>
+      <details key="end" value="519"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/processPackages/%.1/%/%.2/%.1">
+      <details key="start" value="527"/>
+      <details key="end" value="534"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/processPackages/%.1/aPackage">
+      <details key="start" value="472"/>
+      <details key="end" value="490"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/processPackages/%.1/aPackages">
+      <details key="start" value="493"/>
+      <details key="end" value="502"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/processPackages/aPackages">
+      <details key="start" value="343"/>
+      <details key="end" value="374"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/processClasses">
+      <details key="start" value="605"/>
+      <details key="end" value="946"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/processClasses/%">
+      <details key="start" value="669"/>
+      <details key="end" value="934"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/processClasses/%/%">
+      <details key="start" value="704"/>
+      <details key="end" value="717"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/processClasses/%/%.1">
+      <details key="start" value="718"/>
+      <details key="end" value="729"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/processClasses/%/%.1/aClass">
+      <details key="start" value="718"/>
+      <details key="end" value="724"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/processClasses/%/%.2">
+      <details key="start" value="731"/>
+      <details key="end" value="734"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/processClasses/%/%.3">
+      <details key="start" value="735"/>
+      <details key="end" value="923"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/processClasses/%/%.3/%">
+      <details key="start" value="794"/>
+      <details key="end" value="915"/>
+      <details key="line" value="24"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/processClasses/%/%.3/%/%">
+      <details key="start" value="837"/>
+      <details key="end" value="838"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/processClasses/%/%.3/%/%.1">
+      <details key="start" value="839"/>
+      <details key="end" value="849"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/processClasses/%/%.3/%/%.1/field">
+      <details key="start" value="839"/>
+      <details key="end" value="844"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/processClasses/%/%.3/%/%.2">
+      <details key="start" value="851"/>
+      <details key="end" value="854"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/processClasses/%/%.3/%/%.3">
+      <details key="start" value="855"/>
+      <details key="end" value="905"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/processClasses/%/%.3/%/%.3/%">
+      <details key="start" value="855"/>
+      <details key="end" value="893"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/processClasses/%/%.3/%/%.3/%/%">
+      <details key="start" value="855"/>
+      <details key="end" value="888"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/processClasses/%/%.3/%/%.3/%/%/field">
+      <details key="start" value="855"/>
+      <details key="end" value="860"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/processClasses/%/%.3/%/%.3/%/%/%">
+      <details key="start" value="871"/>
+      <details key="end" value="887"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/processClasses/%/%.3/%/%.4">
+      <details key="start" value="907"/>
+      <details key="end" value="909"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/processClasses/%/%.3/%/%.5">
+      <details key="start" value="798"/>
+      <details key="end" value="835"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/processClasses/%/%.3/%/%.5/field">
+      <details key="start" value="799"/>
+      <details key="end" value="804"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/processClasses/%/%.3/%/%.5/%">
+      <details key="start" value="817"/>
+      <details key="end" value="833"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/processClasses/%/%.3/field">
+      <details key="start" value="741"/>
+      <details key="end" value="764"/>
+      <details key="line" value="23"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/processClasses/%/%.3/%.1">
+      <details key="start" value="767"/>
+      <details key="end" value="790"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/processClasses/%/%.3/%.1/aClass">
+      <details key="start" value="767"/>
+      <details key="end" value="773"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/processClasses/%/%.4">
+      <details key="start" value="924"/>
+      <details key="end" value="928"/>
+      <details key="line" value="28"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/processClasses/%/aClass">
+      <details key="start" value="675"/>
+      <details key="end" value="690"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/processClasses/%/aClasses">
+      <details key="start" value="693"/>
+      <details key="end" value="701"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/processClasses/aClasses">
+      <details key="start" value="637"/>
+      <details key="end" value="666"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/toSqlType">
+      <details key="start" value="948"/>
+      <details key="end" value="1052"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/toSqlType/t">
+      <details key="start" value="972"/>
+      <details key="end" value="982"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/toSqlType/%">
+      <details key="start" value="997"/>
+      <details key="end" value="1048"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/toSqlType/%/%">
+      <details key="start" value="999"/>
+      <details key="end" value="1013"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/toSqlType/%/%/t">
+      <details key="start" value="1000"/>
+      <details key="end" value="1001"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/toSqlType/%/%/%">
+      <details key="start" value="1004"/>
+      <details key="end" value="1012"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/toSqlType/%/%.1">
+      <details key="start" value="1019"/>
+      <details key="end" value="1033"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/toSqlType/%/t">
+      <details key="start" value="1040"/>
+      <details key="end" value="1041"/>
+      <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

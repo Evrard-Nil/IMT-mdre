@@ -20,7 +20,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"
         eType="#//Package" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FieldDeclaration" eSuperTypes="#//BodyDeclaration"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FieldDeclaration" eSuperTypes="#//BodyDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MethodDeclaration" eSuperTypes="#//AbstractMethodDeclaration"/>
   <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"

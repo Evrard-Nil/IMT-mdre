@@ -6,19 +6,12 @@
 [comment @main/]  
 [file ('PetStore_rendering.html', false, 'UTF-8')]
 	
-	public model [model.name.toUpperFirst()/] {
-	
-	private boolean [model.proxy/]
-
-	[for (ownedElements : Package | model.ownedElements)]
-		block_expression
-	[/for]
-	
-	[for (comments : Comment | model.comments)]
-		block_expression
-	[/for]
- 
-   }
+	<body>
+		<img src="http://yuml.me/diagram/scruffy/class/['['/]Model[']'/]"></img>
+	</body>
+	[for (it : Type | model.ownedElements)]
+	block_expression
+[/for]	
 
 [/file]
 [/template]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generateSQL" name="tp.fil">
-    <property name="ECLIPSE_HOME" value="../../../../../../../../Applications/Eclipse 2.app/Contents/Eclipse"/>
+    <property name="ECLIPSE_HOME" value="../../../Documents/Eclips Modeling Tools/eclipse"/>
     <property name="ECLIPSE_WORKSPACE" value="../.."/>
 
     <!-- The classpath with only the dependencies used by the project -->

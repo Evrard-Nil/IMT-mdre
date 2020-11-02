@@ -6,7 +6,15 @@
 [comment @main/] 
 [file ('PetStore_database.sql', false, 'UTF-8')]
 	
-	[comment TO BE COMPLETED/]
+	[for (aPackage : Package | model.ownedElements)]
+	CREATE TABLE
+	[/for]
 
 [/file]
+[/template]
+
+[template public processPackages(aPackages : OrderedSet(Package))]
+	[for (aPackage : Package | aPackages)]
+		[processPackages(aPackage.ownedPackages)/]
+	[/for]
 [/template]

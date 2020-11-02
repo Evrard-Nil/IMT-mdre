@@ -27,6 +27,7 @@
 
 [template public processClasses(aClasses : OrderedSet(Classe))]
 [for (aClass : Classe | aClasses)]
+[if not((aClass.name = 'SelectItem'))]
 <img src="http://yuml.me/diagram/scruffy/class/['['+aClass.name/]|
 	[for (field : BodyDeclaration | aClass.bodyDeclarations)]
 	[if (field.eClass() = FieldDeclaration)]
@@ -34,5 +35,6 @@
 	[/if]
 	[/for]
 [']'/]"></img>
+[/if]
 [/for]
 [/template]

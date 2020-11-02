@@ -19,6 +19,7 @@
 [/template]
 [template public processClasses(aClasses : OrderedSet(Classe))]
 [for (aClass : Classe | aClasses)]
+[if not((aClass.name = 'SelectItem'))]
 CREATE TABLE [aClass.name/] (
 	[for (field : BodyDeclaration | aClass.bodyDeclarations)]
 	[if (field.oclIsTypeOf(FieldDeclaration))]
@@ -26,6 +27,7 @@ CREATE TABLE [aClass.name/] (
 	[/if]
 	[/for]
 );
+[/if]
 
 [/for]
 [/template]

@@ -7,11 +7,34 @@
 [file ('PetStore_rendering.html', false, 'UTF-8')]
 	
 	<body>
-		<img src="http://yuml.me/diagram/scruffy/class/['['/]Model[']'/]"></img>
+		[processPackages(model.ownedElements)/]
 	</body>
-	[for (it : Type | model.ownedElements)]
-	block_expression
-[/for]	
 
 [/file]
+[/template]
+
+[template public processPackages(aPackages : OrderedSet(Package))]
+	[for (aPackage : Package | aPackages)]
+		[processPackages(aPackage.ownedPackages)/]
+	[/for]
+	
+	[for (aPackage : Package | aPackages)]
+		[if (aPackage.name = 'model')]
+	[processClasses(aPackage.ownedElements)/]
+		[/if]
+	[/for]
+[/template]
+
+[template public processClasses(aClasses : OrderedSet(Classe))]
+[for (aClass : Classe | aClasses)]
+[if not((aClass.name = 'SelectItem'))]
+<img src="http://yuml.me/diagram/scruffy/class/['['+aClass.name/]|
+	[for (field : BodyDeclaration | aClass.bodyDeclarations)]
+	[if (field.eClass() = FieldDeclaration)]
+		[field.name+' : '+field.oclAsType(FieldDeclaration).type+';'/]
+	[/if]
+	[/for]
+[']'/]"></img>
+[/if]
+[/for]
 [/template]

@@ -1,20 +1,39 @@
 [comment encoding = UTF-8 /]
 [module generateSQL('http://data')]
 [comment 'platform:/resource/tp.fil/src/tp/fil/resources/Data.ecore' /]
-
 [template public generateSQL(model : Model)]
 [comment @main/] 
 [file ('PetStore_database.sql', false, 'UTF-8')]
-	
-	[for (aPackage : Package | model.ownedElements)]
-	CREATE TABLE
-	[/for]
-
+	[processPackages(model.ownedElements)/]
 [/file]
 [/template]
-
 [template public processPackages(aPackages : OrderedSet(Package))]
-	[for (aPackage : Package | aPackages)]
-		[processPackages(aPackage.ownedPackages)/]
-	[/for]
+[for (aPackage : Package | aPackages)]
+[processPackages(aPackage.ownedPackages)/]
+[/for]
+[for (aPackage : Package | aPackages)]
+	[if (aPackage.name = 'model')]
+[processClasses(aPackage.ownedElements)/]
+	[/if]
+[/for]
 [/template]
+[template public processClasses(aClasses : OrderedSet(Classe))]
+[for (aClass : Classe | aClasses)]
+[if not((aClass.name = 'SelectItem'))]
+CREATE TABLE [aClass.name/] (
+	[for (field : BodyDeclaration | aClass.bodyDeclarations)]
+	[if (field.oclIsTypeOf(FieldDeclaration))]
+	[field.name/] : [field.oclAsType(FieldDeclaration).type.toSqlType()/],
+	[/if]
+	[/for]
+);
+[/if]
+
+[/for]
+[/template]
+
+[query public toSqlType(t : String) : String = 
+	if(t = 'String') then 'VARCHAR(255)'
+	else t
+	endif
+ /]

@@ -4,7 +4,7 @@
     <booleanAttribute key="org.eclipse.acceleo.ide.ui.COMPUTE_PROFILING" value="false"/>
     <booleanAttribute key="org.eclipse.acceleo.ide.ui.COMPUTE_TRACEABILITY" value="false"/>
     <stringAttribute key="org.eclipse.acceleo.ide.ui.LAUNCHING_STRATEGY_DESCRIPTION" value="Java Application"/>
-    <stringAttribute key="org.eclipse.acceleo.ide.ui.MODEL_PATH" value="/tp.fil/PetStore_output.xmi"/>
+    <stringAttribute key="org.eclipse.acceleo.ide.ui.MODEL_PATH" value="/tp.fil/PetStore_ATLoutput.xmi"/>
     <stringAttribute key="org.eclipse.acceleo.ide.ui.TARGET_PATH" value="/tp.fil"/>
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
         <listEntry value="/tp.fil/src/tp/fil/main/GenerateSQL.java"/>
@@ -12,11 +12,9 @@
     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
         <listEntry value="1"/>
     </listAttribute>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
-    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
     <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="tp.fil.main.GenerateSQL"/>
     <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="tp.fil"/>
-    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;/Users/evrard-nil/Documents/1-IMT/2020/reverse-engineering-model/tp.fil/PetStore_output.xmi&quot; &quot;/Users/evrard-nil/Documents/1-IMT/2020/reverse-engineering-model/tp.fil&quot;"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="&quot;/home/bart/eclipse-model-workspace/tp.fil/PetStore_ATLoutput.xmi&quot; &quot;/home/bart/eclipse-model-workspace/tp.fil&quot;"/>
     <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="tp.fil"/>
 </launchConfiguration>

@@ -59,6 +59,7 @@ rule JavaFieldDeclaration2DataFieldDeclaration {
 	to
 		dfd : Data!FieldDeclaration (
 			name <- jfd.fragments.first().name,
+			type <- if(not(jfd.type = OclUndefined)) then (jfd.type.type.name) else 'String' endif,
 			proxy <- jfd.proxy,
 			comments <- jfd.comments	
 		)

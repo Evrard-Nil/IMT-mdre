@@ -111,7 +111,7 @@ public class DataComputation {
 			 */
 
 			// Serialize Data model
-			dataModel.save(new FileOutputStream("javaOutput.xmi"), null);
+			dataModel.save(new FileOutputStream("PetStore_JavaOutput.xmi"), null);
 
 			// Unload models
 			javaModel.unload();
@@ -123,7 +123,6 @@ public class DataComputation {
 	}
 
 	private static void transfoModel(EObject modelObject, EObject currentModelElement) {
-		System.out.println(currentModelElement.eClass().getName());
 		EStructuralFeature nameFeat = currentModelElement.eClass().getEStructuralFeature("name");
 		EStructuralFeature nameFeatD = modelClass.getEStructuralFeature("name");
 
@@ -220,7 +219,14 @@ public class DataComputation {
 				EObject fieldObject = dataPackage.getEFactoryInstance().create(fieldDeclarationClass);
 				String name = ((FieldDeclaration) p).getFragments().get(0).getName();
 				fieldObject.eSet(fieldDeclarationClass.getEStructuralFeature("name"), name);
-
+				
+				String type = "String";
+				
+				if (((FieldDeclaration) p).getType() != null) {
+					type = ((FieldDeclaration) p).getType().getType().getName();
+				}
+				fieldObject.eSet(fieldDeclarationClass.getEStructuralFeature("type"), type);
+				
 				getProxyAndComment(p, fieldObject);
 				bodyDeclarationsD.add(fieldObject);
 
